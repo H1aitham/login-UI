@@ -14,9 +14,6 @@ class ProjectListScreenTtree extends StatefulWidget {
 }
 
 class _ProjectListScreenTtreeState extends State<ProjectListScreenTtree> {
-  String _phone = '';
-  final websiteUri = Uri.parse('https://heyflutter.com');
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgr,
@@ -26,51 +23,19 @@ class _ProjectListScreenTtreeState extends State<ProjectListScreenTtree> {
       ),
       body: Column(
         children: [
+          Container(
+            height: 200,
+          ),
           Center(
             child: Text(
                 style: TextStyle(fontSize: 40, color: textWh),
-                'ALL projects ${core.get<SharedPreferences>().getString('EnterText')}'),
+                'Email : ${core.get<SharedPreferences>().getString('EnterText')}'),
           ),
-
-
-          
-          TextField(
-            onChanged: (text) => _phone = text,
-            decoration: const InputDecoration(hintText: 'enter phone'),
+          Center(
+            child: Text(
+                style: TextStyle(fontSize: 40, color: textWh),
+                'Password : ${core.get<SharedPreferences>().getString('password')}'),
           ),
-          const SizedBox(
-            height: 30,
-          ),
-          ElevatedButton(
-              onPressed: () async {
-                final url = Uri(scheme: 'tel', path: _phone);
-                if (await canLaunchUrl(url)) {
-                  launchUrl(url);
-                }
-              },
-              child: Text(
-                'Make phone',
-                style: TextStyle(color: textBl),
-              )),
-          Link(
-            uri: websiteUri,
-            target: LinkTarget.defaultTarget,
-            builder: (context, openLink) => TextButton(
-                onPressed: openLink, child: Text(websiteUri.toString())),
-          ),
-          ElevatedButton(
-              onPressed: () => setState(() {
-                    launchUrl(websiteUri, mode: LaunchMode.externalApplication);
-                  }),
-              child: Text('Lunch in browser', style: TextStyle(color: textBl))),
-          const SizedBox(
-            height: 30,
-          ),
-          ElevatedButton(
-              onPressed: () {
-                launchUrl(websiteUri, mode: LaunchMode.inAppWebView);
-              },
-              child: Text('Launch in app', style: TextStyle(color: textBl)))
         ],
       ),
     );

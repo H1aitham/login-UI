@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:three_intrfaces_app_with_api_etc/config/get_it_config.dart';
 import 'package:three_intrfaces_app_with_api_etc/model/page_model.dart';
 import 'package:three_intrfaces_app_with_api_etc/res/app_color.dart';
+import 'package:three_intrfaces_app_with_api_etc/res/app_style.dart';
 import 'package:three_intrfaces_app_with_api_etc/service/page_service.dart';
 import 'package:three_intrfaces_app_with_api_etc/view/pagethree.dart';
 
@@ -85,6 +86,7 @@ class ProjectListScreen extends StatelessWidget {
                   ),
                   Expanded(
                       child: ListView.builder(
+                    physics: BouncingScrollPhysics(),
                     itemCount: givedate.length,
                     itemBuilder: (context, index) {
                       PageModel give = givedate[index];
@@ -150,9 +152,6 @@ class ProjectListScreen extends StatelessWidget {
                   )),
                   InkWell(
                     onTap: () {
-                      // core
-                      //     .get<SharedPreferences>()
-                      //     .setString('snab ', givedate.isNotEmpty ? givedate[0].name : '');
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -168,13 +167,8 @@ class ProjectListScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30),
                             color: textWh),
                         child: Center(
-                            child: Text(
-                          'REGISTRATION',
-                          style: TextStyle(
-                              color: textBl,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18),
-                        )),
+                            child: Text('Display input',
+                                style: secondaryTextStyle)),
                       ),
                     ),
                   ),
